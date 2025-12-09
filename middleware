@@ -1,0 +1,30 @@
+const express = require("express")
+
+const app=express();
+app.use(express.json());
+app.get('/',(req,res)=>{
+    let data = req.body;
+    console.log(data);
+    res.send("api ok")
+})
+app.get('/get-user',(req,res)=>{
+    res.send("api sender")
+})
+app.post('/add-user',(req,res)=>{
+    let data=req.body;
+    console.log(data);
+    
+    // console.log("posting data")
+    res.send("data added");
+})
+app.put('/put-user',(req,res)=>{
+    let data=req.body
+console.log("putting data",data)
+res.send({
+    message:"user updated",
+    updatedData:data
+});
+});
+app.listen(7005,()=>{
+    console.log("listening")
+})
